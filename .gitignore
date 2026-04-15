@@ -1,7 +1,8 @@
 node_modules/
 out/
 dist/
+episodes/
 .DS_Store
-*.env
-*.env.local
+.env
+.env.local
 .env.production

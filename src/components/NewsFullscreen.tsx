@@ -1,7 +1,9 @@
 import React from "react";
 import {
   AbsoluteFill,
+  Img,
   interpolate,
+  staticFile,
   useCurrentFrame,
 } from "remotion";
 import { VIDEO_WIDTH, VIDEO_HEIGHT, COLORS } from "../lib/constants";
@@ -13,7 +15,7 @@ interface Props {
   newsIndex: number;
 }
 
-// Placeholder colors for different news items
+// Placeholder colors for when no AI images exist yet
 const NEWS_COLORS = ["#1565C0", "#C62828", "#6A1B9A", "#E65100", "#2E7D32"];
 
 export const NewsFullscreen: React.FC<Props> = ({
@@ -22,22 +24,53 @@ export const NewsFullscreen: React.FC<Props> = ({
   newsIndex,
 }) => {
   const frame = useCurrentFrame();
+  const hasImage1 = !!segment.visual_path;
+  const hasImage2 = !!segment.visual_path_2;
+  const midpoint = Math.floor(durationInFrames / 2);
+  const crossfadeDuration = 12; // frames for crossfade
 
-  // Slide in from right
+  // Slide in from right (whole segment)
   const slideIn = interpolate(frame, [0, 15], [VIDEO_WIDTH, 0], {
     extrapolateRight: "clamp",
   });
 
-  // Ken Burns effect (slow zoom on static images)
-  const zoom = interpolate(frame, [0, durationInFrames], [1, 1.1], {
-    extrapolateRight: "clamp",
-  });
-
-  // Fade out
+  // Fade out at end
   const fadeOut = interpolate(
     frame,
     [durationInFrames - 8, durationInFrames],
     [1, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+  );
+
+  // Image 1: Ken Burns zoom in + pan slightly right
+  const zoom1 = interpolate(frame, [0, midpoint + crossfadeDuration], [1, 1.15], {
+    extrapolateRight: "clamp",
+  });
+  const pan1X = interpolate(frame, [0, midpoint + crossfadeDuration], [0, -30], {
+    extrapolateRight: "clamp",
+  });
+  const opacity1 = hasImage2
+    ? interpolate(
+        frame,
+        [midpoint - crossfadeDuration / 2, midpoint + crossfadeDuration / 2],
+        [1, 0],
+        { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+      )
+    : 1;
+
+  // Image 2: Ken Burns zoom out + pan slightly left (opposite direction for variety)
+  const zoom2 = interpolate(frame, [midpoint, durationInFrames], [1.12, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const pan2X = interpolate(frame, [midpoint, durationInFrames], [20, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const opacity2 = interpolate(
+    frame,
+    [midpoint - crossfadeDuration / 2, midpoint + crossfadeDuration / 2],
+    [0, 1],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
@@ -55,7 +88,7 @@ export const NewsFullscreen: React.FC<Props> = ({
 
   return (
     <AbsoluteFill style={{ opacity: fadeOut }}>
-      {/* Background - placeholder for actual news image/video */}
+      {/* Image 1 (or placeholder) */}
       <div
         style={{
           position: "absolute",
@@ -63,45 +96,67 @@ export const NewsFullscreen: React.FC<Props> = ({
           left: 0,
           width: VIDEO_WIDTH,
           height: VIDEO_HEIGHT,
-          transform: `translateX(${slideIn}px) scale(${zoom})`,
-          transformOrigin: "center center",
-          background: `linear-gradient(160deg, ${bgColor}, ${bgColor}88, ${COLORS.background})`,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          overflow: "hidden",
+          opacity: opacity1,
+          transform: `translateX(${slideIn}px)`,
         }}
       >
-        {/* Placeholder visual */}
+        {hasImage1 ? (
+          <Img
+            src={staticFile(segment.visual_path!)}
+            style={{
+              width: VIDEO_WIDTH,
+              height: VIDEO_HEIGHT,
+              objectFit: "cover",
+              transform: `scale(${zoom1}) translateX(${pan1X}px)`,
+              transformOrigin: "center center",
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              transform: `scale(${zoom1})`,
+              transformOrigin: "center center",
+              background: `linear-gradient(160deg, ${bgColor}, ${bgColor}88, ${COLORS.background})`,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <span style={{ fontSize: 120 }}>
+              {newsIndex === 0 ? "🐍" : newsIndex === 1 ? "🐍" : "🐍"}
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Image 2 (crossfade in at midpoint) */}
+      {hasImage2 && (
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 16,
-            padding: 60,
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: VIDEO_WIDTH,
+            height: VIDEO_HEIGHT,
+            overflow: "hidden",
+            opacity: opacity2,
           }}
         >
-          <span
+          <Img
+            src={staticFile(segment.visual_path_2!)}
             style={{
-              fontSize: 120,
-              filter: "grayscale(0)",
+              width: VIDEO_WIDTH,
+              height: VIDEO_HEIGHT,
+              objectFit: "cover",
+              transform: `scale(${zoom2}) translateX(${pan2X}px)`,
+              transformOrigin: "center center",
             }}
-          >
-            {newsIndex === 0 ? "💰" : newsIndex === 1 ? "🤖" : "⚽"}
-          </span>
-          <span
-            style={{
-              color: COLORS.text,
-              fontSize: 28,
-              fontFamily: "Arial, sans-serif",
-              opacity: 0.5,
-              textAlign: "center",
-            }}
-          >
-            [ AI Generated Visual ]
-          </span>
+          />
         </div>
-      </div>
+      )}
 
       {/* Top gradient for readability */}
       <div

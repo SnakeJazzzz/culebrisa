@@ -1,0 +1,127 @@
+{
+  "episode_id": "2026-04-15-001",
+  "date": "2026-04-15",
+  "status": "rendered",
+  "background_music": "assets/music/background.mp3",
+  "total_duration_ms": 74064,
+  "segments": [
+    {
+      "type": "intro",
+      "layout": "fullscreen",
+      "duration_ms": 5000,
+      "audio_path": "assets/music/Intro.mp3",
+      "visual_path": null,
+      "visual_type": "static",
+      "script_text": "",
+      "news_source": null,
+      "prompts": null
+    },
+    {
+      "type": "cobradoriga_speaks",
+      "layout": "centered",
+      "duration_ms": 4728,
+      "audio_path": "assets/audio/2026-04-15-001/intro.mp3",
+      "visual_path": null,
+      "visual_type": "rive_animation",
+      "script_text": "Bienvenidos reptiles a otro venenoso episodio de Culebrisa.",
+      "news_source": null,
+      "prompts": null
+    },
+    {
+      "type": "cobradoriga_speaks",
+      "layout": "centered",
+      "duration_ms": 10057,
+      "audio_path": "assets/audio/2026-04-15-001/headlines.mp3",
+      "visual_path": null,
+      "visual_type": "rive_animation",
+      "script_text": "Hoy: México exige justicia al ICE, una mexicana hace historia en la WNBA, y un empresario prófugo cae en Florida.",
+      "news_source": null,
+      "prompts": null
+    },
+    {
+      "type": "news",
+      "layout": "fullscreen",
+      "duration_ms": 19122,
+      "audio_path": "assets/audio/2026-04-15-001/news_0.mp3",
+      "visual_path": null,
+      "visual_type": "image",
+      "script_text": "México exige acciones inmediatas a EE.UU. tras la muerte de otro ciudadano bajo custodia del ICE en Luisiana. La Cancillería advierte fallas graves en el sistema migratorio estadounidense.",
+      "news_source": {
+        "title": "México exige a EE.UU. \"acciones inmediatas\" tras la muerte de otro ciudadano bajo custodia del ICE",
+        "url": "https://actualidad.rt.com/actualidad/599115-muere-mexicano-custodia-ice-eeuu",
+        "source": "RT"
+      },
+      "prompts": {
+        "image": "A dramatic courtroom-style scene in the serpent universe: a large anthropomorphic Mexican green tree boa wearing a formal diplomatic suit and sash confronts a towering concrete detention facility with scale-textured walls and iron-bar windows shaped like fangs, holding up an official scroll document stamped with a coiled serpent seal. Inside a visible cell, the silhouette of a small serpent lies motionless on the floor, bathed in cold fluorescent light. The mood is tense and somber, cinematic lighting with deep shadows, muted greens and cold blues dominating the palette, vertical 9:16 composition.",
+        "video": "Slow dolly-in toward the detention facility as the diplomat serpent's scales shimmer with rising anger, papers flutter dramatically in a gust of wind, and the cold interior light flickers ominously behind the barred fang-shaped windows."
+      }
+    },
+    {
+      "type": "news",
+      "layout": "fullscreen",
+      "duration_ms": 13505,
+      "audio_path": "assets/audio/2026-04-15-001/news_1.mp3",
+      "visual_path": null,
+      "visual_type": "image",
+      "script_text": "Gabriela Jáquez hace historia: la mexicana fue seleccionada en el puesto cinco del Draft de la WNBA 2026. Fue campeona con UCLA Bruins antes de llegar a la élite.",
+      "news_source": {
+        "title": "Gabriela Jáquez hace historia: mexicana es elegida en el Top 5 del Draft de la NBA Femenil",
+        "url": "https://www.elfinanciero.com.mx/deportes/2026/04/13/quien-es-gabriela-jaquez-basquetbolista-mexicana-elegida-en-el-draft-2026-para-la-wnba/",
+        "source": "El Financiero"
+      },
+      "prompts": {
+        "image": "A triumphant serpent sports scene: a sleek, athletic corn snake with jersey number 5 and UCLA Bruins colors leaps gracefully into the air to dunk a basketball on a glowing arena court patterned with golden scale markings, confetti shaped like tiny shed skins raining down from above. A massive crowd of cheering anthropomorphic serpents of every species fills the stands waving banners that read 'DRAFT DAY' in a bold serpentine font. The lighting is explosive and celebratory — warm golds, purples, and spotlights, vertical 9:16 cinematic composition.",
+        "video": "Dynamic tracking shot following the athlete corn snake's leap in slow motion as she dunks, then the camera pulls back wide to reveal the roaring serpent crowd erupting in celebration, confetti of shed skins cascading through dramatic spotlight beams."
+      }
+    },
+    {
+      "type": "news",
+      "layout": "monitor",
+      "duration_ms": 14655,
+      "audio_path": "assets/audio/2026-04-15-001/news_2.mp3",
+      "visual_path": null,
+      "visual_type": "image",
+      "script_text": "El ICE detuvo en Florida al empresario Rafael Zaga Tawil, prófugo acusado de defraudar cinco mil millones de pesos al Infonavit desde 2020.",
+      "news_source": {
+        "title": "Detienen en EU a Rafael Zaga Tawil, empresario acusado de fraude millonario al Infonavit",
+        "url": "https://www.elfinanciero.com.mx/nacional/2026/04/13/detienen-en-eu-a-rafael-zaga-tawil-empresario-acusado-de-fraude-millonario-al-infonavit/",
+        "source": "El Financiero"
+      },
+      "prompts": {
+        "image": "A tense noir arrest scene in the serpent universe: a heavyset, well-dressed king snake in an expensive scale-patterned suit and gold jewelry — representing Rafael Zaga Tawil — is being handcuffed by two large anthropomorphic rattlesnake agents in dark ICE-style jackets, against the backdrop of a luxury hotel lobby with undulating serpentine architecture and a chandelier made of intertwined golden snakes. Behind him, a projection screen displays stacks of snake-faced peso bills and a glowing INFONAVIT logo redesigned with a coiled cobra emblem. Dramatic chiaroscuro lighting, deep shadows, rich greens and golds, vertical 9:16 monitor-style composition.",
+        "video": "Cinematic push-in on the king snake's face as the handcuffs click shut, his gold jewelry catching the light, then a slow pan to the projection screen revealing cascading numbers and snake-faced bills dissolving into static."
+      }
+    },
+    {
+      "type": "cobradoriga_speaks",
+      "layout": "centered",
+      "duration_ms": 3997,
+      "audio_path": "assets/audio/2026-04-15-001/outro.mp3",
+      "visual_path": null,
+      "visual_type": "rive_animation",
+      "script_text": "Eso fue todo reptiles, sigan deslizándose con cuidado.",
+      "news_source": null,
+      "prompts": null
+    },
+    {
+      "type": "outro",
+      "layout": "fullscreen",
+      "duration_ms": 3000,
+      "audio_path": null,
+      "visual_path": null,
+      "visual_type": "static",
+      "script_text": "",
+      "news_source": null,
+      "prompts": null
+    }
+  ],
+  "metadata": {
+    "pipeline_start": "2026-04-15T06:38:42.208Z",
+    "pipeline_end": "2026-04-15T06:38:42.208Z"
+  },
+  "publish_status": {
+    "instagram": "pending",
+    "tiktok": "pending",
+    "youtube": "pending"
+  }
+}

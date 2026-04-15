@@ -21,6 +21,7 @@ export interface Segment {
   duration_ms: number;
   audio_path: string | null;
   visual_path: string | null;
+  visual_path_2: string | null;
   visual_type: VisualType;
   script_text: string;
   news_source: NewsSource | null;

@@ -2,13 +2,18 @@ import React from "react";
 import { Composition } from "remotion";
 import { CulebrisaEpisode } from "./CulebrisaEpisode";
 import { VIDEO_WIDTH, VIDEO_HEIGHT, FPS, msToFrames } from "./lib/constants";
-import episodeData from "./data/episode-example.json";
 import type { Episode } from "./lib/types";
 
-const episode = episodeData as Episode;
+// Try to load latest pipeline-generated episode, fallback to example
+let episodeData: Episode;
+try {
+  episodeData = require("./data/episode-latest.json") as Episode;
+} catch {
+  episodeData = require("./data/episode-example.json") as Episode;
+}
 
 // Calculate total frames from all segments
-const totalDurationFrames = episode.segments.reduce(
+const totalDurationFrames = episodeData.segments.reduce(
   (acc, seg) => acc + msToFrames(seg.duration_ms),
   0
 );
@@ -24,7 +29,7 @@ export const RemotionRoot: React.FC = () => {
         width={VIDEO_WIDTH}
         height={VIDEO_HEIGHT}
         defaultProps={{
-          episode,
+          episode: episodeData,
         }}
       />
     </>

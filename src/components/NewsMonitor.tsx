@@ -1,7 +1,9 @@
 import React from "react";
 import {
   AbsoluteFill,
+  Img,
   interpolate,
+  staticFile,
   useCurrentFrame,
 } from "remotion";
 import { VIDEO_WIDTH, VIDEO_HEIGHT, COLORS } from "../lib/constants";
@@ -20,6 +22,10 @@ export const NewsMonitor: React.FC<Props> = ({
   newsIndex,
 }) => {
   const frame = useCurrentFrame();
+  const hasImage1 = !!segment.visual_path;
+  const hasImage2 = !!segment.visual_path_2;
+  const midpoint = Math.floor(durationInFrames / 2);
+  const crossfadeDuration = 12;
 
   // Fade in
   const fadeIn = interpolate(frame, [0, 12], [0, 1], {
@@ -34,10 +40,30 @@ export const NewsMonitor: React.FC<Props> = ({
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
-  // Ken Burns on the monitor content
-  const zoom = interpolate(frame, [0, durationInFrames], [1, 1.08], {
+  // Image 1: Ken Burns zoom in
+  const zoom1 = interpolate(frame, [0, midpoint + crossfadeDuration], [1, 1.1], {
     extrapolateRight: "clamp",
   });
+  const opacity1 = hasImage2
+    ? interpolate(
+        frame,
+        [midpoint - crossfadeDuration / 2, midpoint + crossfadeDuration / 2],
+        [1, 0],
+        { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+      )
+    : 1;
+
+  // Image 2: Ken Burns zoom out
+  const zoom2 = interpolate(frame, [midpoint, durationInFrames], [1.08, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const opacity2 = interpolate(
+    frame,
+    [midpoint - crossfadeDuration / 2, midpoint + crossfadeDuration / 2],
+    [0, 1],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+  );
 
   // Subtitle reveal
   const words = segment.script_text.split(" ");
@@ -54,7 +80,7 @@ export const NewsMonitor: React.FC<Props> = ({
   const monitorHeight = VIDEO_HEIGHT * 0.52;
   const monitorPadding = 24;
   const cobradorigaAreaTop = monitorTop + monitorHeight + 10;
-  const cobradorigaAreaHeight = VIDEO_HEIGHT - cobradorigaAreaTop - 120; // leave room for subtitles
+  const cobradorigaAreaHeight = VIDEO_HEIGHT - cobradorigaAreaTop - 120;
 
   return (
     <AbsoluteFill
@@ -77,34 +103,70 @@ export const NewsMonitor: React.FC<Props> = ({
           backgroundColor: COLORS.monitorBg,
         }}
       >
-        {/* Monitor content - placeholder for AI visual */}
+        {/* Image 1 (or placeholder) */}
         <div
           style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
             width: "100%",
             height: "100%",
-            transform: `scale(${zoom})`,
-            transformOrigin: "center center",
-            background: `linear-gradient(135deg, #1565C0, #0D47A1)`,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 16,
+            opacity: opacity1,
           }}
         >
-          <span style={{ fontSize: 100 }}>
-            {newsIndex === 0 ? "💰" : newsIndex === 1 ? "🤖" : "⚽"}
-          </span>
-          <span
+          {hasImage1 ? (
+            <Img
+              src={staticFile(segment.visual_path!)}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                transform: `scale(${zoom1})`,
+                transformOrigin: "center center",
+              }}
+            />
+          ) : (
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                transform: `scale(${zoom1})`,
+                transformOrigin: "center center",
+                background: `linear-gradient(135deg, #1565C0, #0D47A1)`,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <span style={{ fontSize: 100 }}>🐍</span>
+            </div>
+          )}
+        </div>
+
+        {/* Image 2 (crossfade) */}
+        {hasImage2 && (
+          <div
             style={{
-              color: COLORS.textMuted,
-              fontSize: 24,
-              fontFamily: "Arial, sans-serif",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              opacity: opacity2,
             }}
           >
-            [ AI Generated Visual ]
-          </span>
-        </div>
+            <Img
+              src={staticFile(segment.visual_path_2!)}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                transform: `scale(${zoom2})`,
+                transformOrigin: "center center",
+              }}
+            />
+          </div>
+        )}
 
         {/* News source badge inside monitor */}
         {segment.news_source && (
@@ -116,6 +178,7 @@ export const NewsMonitor: React.FC<Props> = ({
               backgroundColor: COLORS.primary,
               borderRadius: 6,
               padding: "6px 12px",
+              zIndex: 10,
             }}
           >
             <span
@@ -142,6 +205,7 @@ export const NewsMonitor: React.FC<Props> = ({
               backgroundColor: COLORS.overlay,
               borderRadius: 8,
               padding: "10px 16px",
+              zIndex: 10,
             }}
           >
             <span

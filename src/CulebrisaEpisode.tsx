@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Sequence, Audio } from "remotion";
+import { AbsoluteFill, Sequence, Audio, staticFile } from "remotion";
 import { IntroSegment } from "./components/IntroSegment";
 import { CobradorigaSpeaks } from "./components/CobradorigaSpeaks";
 import { NewsFullscreen } from "./components/NewsFullscreen";
@@ -16,6 +16,7 @@ interface Props {
  * Main composition component.
  * Reads the Episode JSON and renders each segment sequentially
  * using Remotion's <Sequence> for timing.
+ * Audio is played per-segment based on audio_path in the JSON.
  */
 export const CulebrisaEpisode: React.FC<Props> = ({ episode }) => {
   let currentFrame = 0;
@@ -25,6 +26,19 @@ export const CulebrisaEpisode: React.FC<Props> = ({ episode }) => {
     const durationInFrames = msToFrames(segment.duration_ms);
     const fromFrame = currentFrame;
     currentFrame += durationInFrames;
+
+    // Parse audio paths (can be single path or pipe-separated for multiple)
+    const audioPaths = segment.audio_path
+      ? segment.audio_path.split("|").filter(Boolean)
+      : [];
+
+    const audioElements = audioPaths.map((path, audioIndex) => (
+      <Audio
+        key={`audio-${index}-${audioIndex}`}
+        src={staticFile(path)}
+        volume={1}
+      />
+    ));
 
     switch (segment.type) {
       case "intro":
@@ -36,6 +50,7 @@ export const CulebrisaEpisode: React.FC<Props> = ({ episode }) => {
             name="Intro"
           >
             <IntroSegment />
+            {audioElements}
           </Sequence>
         );
 
@@ -51,6 +66,7 @@ export const CulebrisaEpisode: React.FC<Props> = ({ episode }) => {
               segment={segment}
               durationInFrames={durationInFrames}
             />
+            {audioElements}
           </Sequence>
         );
 
@@ -73,6 +89,7 @@ export const CulebrisaEpisode: React.FC<Props> = ({ episode }) => {
               durationInFrames={durationInFrames}
               newsIndex={currentNewsIndex}
             />
+            {audioElements}
           </Sequence>
         );
       }
@@ -86,6 +103,7 @@ export const CulebrisaEpisode: React.FC<Props> = ({ episode }) => {
             name="Outro"
           >
             <OutroSegment />
+            {audioElements}
           </Sequence>
         );
 
@@ -98,11 +116,26 @@ export const CulebrisaEpisode: React.FC<Props> = ({ episode }) => {
     <AbsoluteFill style={{ backgroundColor: COLORS.background }}>
       {episode.segments.map((segment, index) => renderSegment(segment, index))}
 
-      {/* Background music track - spans entire episode */}
-      {/* TODO: Phase 3 - Add background music */}
-      {/* {episode.background_music && (
-        <Audio src={staticFile(episode.background_music)} volume={0.15} />
-      )} */}
+      {/* Background music - starts after intro to avoid clash with stinger */}
+      {episode.background_music && (() => {
+        const introSegment = episode.segments[0];
+        const introFrames = introSegment?.type === "intro"
+          ? msToFrames(introSegment.duration_ms)
+          : 0;
+        const totalFrames = episode.segments.reduce(
+          (acc, s) => acc + msToFrames(s.duration_ms),
+          0
+        );
+        return (
+          <Sequence
+            from={introFrames}
+            durationInFrames={totalFrames - introFrames}
+            name="Background Music"
+          >
+            <Audio src={staticFile(episode.background_music!)} volume={0.12} loop />
+          </Sequence>
+        );
+      })()}
     </AbsoluteFill>
   );
 };
