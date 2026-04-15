@@ -1,0 +1,23 @@
+{
+  "name": "culebrisa",
+  "version": "1.0.0",
+  "description": "Culebrisa - Automated snake-universe news video pipeline powered by Remotion",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts CulebrisaEpisode out/episode.mp4",
+    "render:preview": "remotion render src/index.ts CulebrisaEpisode out/preview.mp4 --frames=0-150"
+  },
+  "dependencies": {
+    "@rive-app/react-canvas": "^4.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "remotion": "^4.0.448"
+  },
+  "devDependencies": {
+    "@remotion/cli": "^4.0.448",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.0"
+  }
+}

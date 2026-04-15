@@ -1,0 +1,116 @@
+{
+  "episode_id": "2026-04-14-001",
+  "date": "2026-04-14",
+  "status": "rendered",
+  "background_music": null,
+  "total_duration_ms": 52000,
+  "segments": [
+    {
+      "type": "intro",
+      "layout": "fullscreen",
+      "duration_ms": 3000,
+      "audio_path": null,
+      "visual_path": null,
+      "visual_type": "static",
+      "script_text": "",
+      "news_source": null,
+      "prompts": null
+    },
+    {
+      "type": "cobradoriga_speaks",
+      "layout": "centered",
+      "duration_ms": 5000,
+      "audio_path": null,
+      "visual_path": null,
+      "visual_type": "rive_animation",
+      "script_text": "Bienvenidos reptiles a otro venenoso episodio de Culebrisa. Las noticias del dia son...",
+      "news_source": null,
+      "prompts": null
+    },
+    {
+      "type": "news",
+      "layout": "fullscreen",
+      "duration_ms": 12000,
+      "audio_path": null,
+      "visual_path": null,
+      "visual_type": "image",
+      "script_text": "El peso mexicano se fortalecio frente al dolar alcanzando su mejor nivel en seis meses. Los analistas serpentinos atribuyen esto a las nuevas politicas de la Reserva Serpentera Federal.",
+      "news_source": {
+        "title": "Peso mexicano se fortalece frente al dolar",
+        "url": "https://example.com/news/1",
+        "source": "El Universal Reptiliano"
+      },
+      "prompts": {
+        "image": "A majestic snake wearing a business suit standing at a financial podium, Mexican peso coins with snake faces rolling uphill while US dollar bills with defeated snake portraits shrink. Wall Street buildings with scale-textured walls. Dramatic golden lighting, semi-realistic style, vibrant greens and golds.",
+        "video": null
+      }
+    },
+    {
+      "type": "news",
+      "layout": "monitor",
+      "duration_ms": 12000,
+      "audio_path": null,
+      "visual_path": null,
+      "visual_type": "image",
+      "script_text": "En tecnologia, una nueva inteligencia artificial desarrollada por serpientes de Silicon Madriguera promete revolucionar la forma en que las viboras procesan informacion. El proyecto, llamado SerpentGPT, ya mueve colas en todo el mundo.",
+      "news_source": {
+        "title": "Nueva IA revoluciona el procesamiento de datos",
+        "url": "https://example.com/news/2",
+        "source": "TechCrunch Reptil"
+      },
+      "prompts": {
+        "image": "A cobra wearing tech startup hoodie typing on a laptop with scale-textured keys, holographic AI interface floating above showing neural networks shaped like intertwined snakes. Silicon Valley office with terrariums instead of cubicles. Neon blue and green lighting, semi-realistic style.",
+        "video": null
+      }
+    },
+    {
+      "type": "news",
+      "layout": "fullscreen",
+      "duration_ms": 12000,
+      "audio_path": null,
+      "visual_path": null,
+      "visual_type": "video",
+      "script_text": "Y en deportes, la seleccion mexicana de futbol gano tres a uno contra Brasil en un partido epico. La vibora goleadora, Sssilva, anoto un hat trick que dejo heladas a las anacondas brasilenas.",
+      "news_source": {
+        "title": "Mexico vence a Brasil 3-1",
+        "url": "https://example.com/news/3",
+        "source": "ESPN Serpentino"
+      },
+      "prompts": {
+        "image": "Rattlesnake soccer player in Mexican green jersey celebrating a goal, arms raised, stadium full of cheering snakes of various species waving Mexican flags with snake emblems. Confetti made of shed snake skin falling. Dramatic stadium lighting, vibrant and energetic, semi-realistic style.",
+        "video": "Camera slowly zooms into the celebrating rattlesnake player, confetti falls in slow motion, crowd of snakes rises in a wave, stadium lights pulse."
+      }
+    },
+    {
+      "type": "cobradoriga_speaks",
+      "layout": "centered",
+      "duration_ms": 4000,
+      "audio_path": null,
+      "visual_path": null,
+      "visual_type": "rive_animation",
+      "script_text": "Eso fue todo reptiles. Nos vemos manana con mas noticias venenosas. Sigan deslizandose!",
+      "news_source": null,
+      "prompts": null
+    },
+    {
+      "type": "outro",
+      "layout": "fullscreen",
+      "duration_ms": 3000,
+      "audio_path": null,
+      "visual_path": null,
+      "visual_type": "static",
+      "script_text": "",
+      "news_source": null,
+      "prompts": null
+    }
+  ],
+  "metadata": {
+    "pipeline_start": "2026-04-14T06:00:00Z",
+    "pipeline_end": "2026-04-14T06:14:00Z"
+  },
+  "publish_status": {
+    "instagram": "pending",
+    "tiktok": "pending",
+    "youtube": "pending"
+  }
+}
