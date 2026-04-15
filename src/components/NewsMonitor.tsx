@@ -5,6 +5,7 @@ import {
   useCurrentFrame,
 } from "remotion";
 import { VIDEO_WIDTH, VIDEO_HEIGHT, COLORS } from "../lib/constants";
+import { CobradorigaRive } from "./CobradorigaRive";
 import type { Segment } from "../lib/types";
 
 interface Props {
@@ -48,13 +49,12 @@ export const NewsMonitor: React.FC<Props> = ({
   );
   const visibleText = words.slice(0, visibleWordCount).join(" ");
 
-  // Monitor area dimensions
+  // Layout dimensions
   const monitorTop = 40;
-  const monitorHeight = VIDEO_HEIGHT * 0.58;
+  const monitorHeight = VIDEO_HEIGHT * 0.52;
   const monitorPadding = 24;
-
-  // Cobradoriga area
-  const cobradorigaTop = monitorTop + monitorHeight + 20;
+  const cobradorigaAreaTop = monitorTop + monitorHeight + 10;
+  const cobradorigaAreaHeight = VIDEO_HEIGHT - cobradorigaAreaTop - 120; // leave room for subtitles
 
   return (
     <AbsoluteFill
@@ -159,48 +159,23 @@ export const NewsMonitor: React.FC<Props> = ({
         )}
       </div>
 
-      {/* Cobradoriga area at bottom */}
+      {/* Cobradoriga Rive animation at bottom */}
       <div
         style={{
           position: "absolute",
-          top: cobradorigaTop,
+          top: cobradorigaAreaTop,
           left: 0,
           right: 0,
-          bottom: 0,
+          height: cobradorigaAreaHeight,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        {/* Placeholder for Rive animation - Phase 2 */}
-        <div
-          style={{
-            width: VIDEO_WIDTH * 0.5,
-            height: VIDEO_HEIGHT * 0.25,
-            borderRadius: 20,
-            background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.primaryLight})`,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            border: `3px solid ${COLORS.accent}`,
-          }}
-        >
-          <span
-            style={{
-              color: COLORS.accent,
-              fontSize: 32,
-              fontFamily: "Arial, sans-serif",
-              fontWeight: "bold",
-              textAlign: "center",
-            }}
-          >
-            COBRADORIGA
-            <br />
-            <span style={{ fontSize: 18, color: COLORS.textMuted }}>
-              [ Rive ]
-            </span>
-          </span>
-        </div>
+        <CobradorigaRive
+          width={VIDEO_WIDTH * 0.55}
+          height={cobradorigaAreaHeight}
+        />
       </div>
 
       {/* Subtitle overlay */}

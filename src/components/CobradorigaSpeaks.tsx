@@ -5,10 +5,8 @@ import {
   useCurrentFrame,
 } from "remotion";
 import { VIDEO_WIDTH, VIDEO_HEIGHT, COLORS } from "../lib/constants";
+import { CobradorigaRive } from "./CobradorigaRive";
 import type { Segment } from "../lib/types";
-
-// TODO: Phase 2 - Replace placeholder with actual Rive integration
-// import { useRive } from "@rive-app/react-canvas";
 
 interface Props {
   segment: Segment;
@@ -48,11 +46,11 @@ export const CobradorigaSpeaks: React.FC<Props> = ({ segment, durationInFrames }
         opacity: fadeIn * fadeOut,
       }}
     >
-      {/* Cobradoriga placeholder - Phase 2 will use Rive */}
+      {/* Cobradoriga Rive Animation - centered upper area */}
       <div
         style={{
           position: "absolute",
-          top: VIDEO_HEIGHT * 0.15,
+          top: VIDEO_HEIGHT * 0.08,
           left: 0,
           right: 0,
           display: "flex",
@@ -60,43 +58,32 @@ export const CobradorigaSpeaks: React.FC<Props> = ({ segment, durationInFrames }
           alignItems: "center",
         }}
       >
-        <div
-          style={{
-            width: VIDEO_WIDTH * 0.7,
-            height: VIDEO_HEIGHT * 0.45,
-            borderRadius: 30,
-            background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.primaryLight})`,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            border: `4px solid ${COLORS.accent}`,
-            boxShadow: `0 0 60px ${COLORS.primary}40`,
-          }}
-        >
-          <span
-            style={{
-              color: COLORS.accent,
-              fontSize: 48,
-              fontFamily: "Arial, sans-serif",
-              fontWeight: "bold",
-              textAlign: "center",
-              padding: 40,
-            }}
-          >
-            COBRADORIGA
-            <br />
-            <span style={{ fontSize: 24, color: COLORS.textMuted }}>
-              [ Rive Animation Here ]
-            </span>
-          </span>
-        </div>
+        <CobradorigaRive
+          width={VIDEO_WIDTH * 0.85}
+          height={VIDEO_HEIGHT * 0.55}
+        />
       </div>
+
+      {/* Subtle glow behind character */}
+      <div
+        style={{
+          position: "absolute",
+          top: VIDEO_HEIGHT * 0.25,
+          left: VIDEO_WIDTH * 0.2,
+          width: VIDEO_WIDTH * 0.6,
+          height: VIDEO_HEIGHT * 0.2,
+          borderRadius: "50%",
+          background: `radial-gradient(ellipse, ${COLORS.primary}30, transparent)`,
+          filter: "blur(40px)",
+          pointerEvents: "none",
+        }}
+      />
 
       {/* Subtitle text at bottom */}
       <div
         style={{
           position: "absolute",
-          bottom: VIDEO_HEIGHT * 0.1,
+          bottom: VIDEO_HEIGHT * 0.08,
           left: 40,
           right: 40,
           display: "flex",
