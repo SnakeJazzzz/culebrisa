@@ -75,12 +75,12 @@ export const NewsMonitor: React.FC<Props> = ({
   );
   const visibleText = words.slice(0, visibleWordCount).join(" ");
 
-  // Layout dimensions
-  const monitorTop = 40;
-  const monitorHeight = VIDEO_HEIGHT * 0.52;
-  const monitorPadding = 24;
-  const cobradorigaAreaTop = monitorTop + monitorHeight + 10;
-  const cobradorigaAreaHeight = VIDEO_HEIGHT - cobradorigaAreaTop - 120;
+  // Layout dimensions - 40% monitor, 60% Cobradoriga
+  const monitorTop = 20;
+  const monitorHeight = VIDEO_HEIGHT * 0.38;
+  const monitorPadding = 16;
+  const cobradorigaAreaTop = monitorTop + monitorHeight;
+  const cobradorigaAreaHeight = VIDEO_HEIGHT - cobradorigaAreaTop - 90;
 
   return (
     <AbsoluteFill
@@ -237,7 +237,7 @@ export const NewsMonitor: React.FC<Props> = ({
         }}
       >
         <CobradorigaRive
-          width={VIDEO_WIDTH * 0.55}
+          width={VIDEO_WIDTH * 0.45}
           height={cobradorigaAreaHeight}
         />
       </div>

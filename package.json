@@ -9,13 +9,16 @@
     "render:preview": "remotion render src/index.ts CulebrisaEpisode out/preview.mp4 --frames=0-150",
     "pipeline": "tsx pipeline/orchestrator/run.ts",
     "pipeline:no-audio": "tsx pipeline/orchestrator/run.ts --skip-audio",
-    "voices": "tsx -e \"import { listVoices } from './pipeline/narration/narration-engine.ts'; listVoices();\""
+    "voices": "tsx -e \"import { listVoices } from './pipeline/narration/narration-engine.ts'; listVoices();\"",
+    "youtube:auth": "tsx pipeline/publishers/youtube-auth.ts",
+    "youtube:publish": "tsx pipeline/orchestrator/run.ts --publish"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
     "@remotion/rive": "^4.0.448",
     "@rive-app/react-canvas": "^4.0.0",
     "dotenv": "^16.4.0",
+    "googleapis": "^171.4.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "remotion": "^4.0.448"

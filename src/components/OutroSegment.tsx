@@ -39,7 +39,7 @@ export const OutroSegment: React.FC = () => {
         opacity: fadeIn,
       }}
     >
-      {/* Logo */}
+      {/* Logo - larger and more prominent */}
       <div
         style={{
           transform: `scale(${pulse})`,
@@ -47,14 +47,15 @@ export const OutroSegment: React.FC = () => {
           flexDirection: "column",
           alignItems: "center",
           gap: 40,
+          marginTop: -VIDEO_HEIGHT * 0.1,
         }}
       >
         <Img
           src={staticFile("assets/NoticieroSerpentico.svg")}
           style={{
-            width: VIDEO_WIDTH * 0.6,
+            width: VIDEO_WIDTH * 0.85,
             height: "auto",
-            maxHeight: VIDEO_HEIGHT * 0.3,
+            maxHeight: VIDEO_HEIGHT * 0.45,
             objectFit: "contain",
           }}
         />
@@ -64,7 +65,7 @@ export const OutroSegment: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          bottom: VIDEO_HEIGHT * 0.2,
+          bottom: VIDEO_HEIGHT * 0.15,
           left: 40,
           right: 40,
           opacity: textOpacity,
@@ -77,7 +78,7 @@ export const OutroSegment: React.FC = () => {
         <span
           style={{
             color: COLORS.accent,
-            fontSize: 40,
+            fontSize: 44,
             fontFamily: "Arial, sans-serif",
             fontWeight: "bold",
             textAlign: "center",
@@ -88,7 +89,7 @@ export const OutroSegment: React.FC = () => {
         <span
           style={{
             color: COLORS.textMuted,
-            fontSize: 28,
+            fontSize: 32,
             fontFamily: "Arial, sans-serif",
             textAlign: "center",
           }}
@@ -96,18 +97,6 @@ export const OutroSegment: React.FC = () => {
           @culebrisa
         </span>
       </div>
-
-      {/* Decorative bottom gradient */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: 100,
-          background: `linear-gradient(transparent, ${COLORS.primary}40)`,
-        }}
-      />
     </AbsoluteFill>
   );
 };

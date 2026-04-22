@@ -9,15 +9,13 @@ interface Props {
 
 /**
  * Shared Rive component for Cobradoriga animation.
- * Used in both CobradorigaSpeaks (full) and NewsMonitor (small).
  *
- * Uses default artboard and animation from the .riv file.
- * The animation is a loop: eye blink, mouth open/close, tongue.
+ * The Rive artboard is landscape but our screen is portrait.
+ * We use fit="contain" and let the animation sit naturally
+ * in the lower portion of the frame, like a news anchor.
  *
- * If you need to target a specific artboard/animation, check
- * the names in rive.app editor and set them here:
- *   artboard="YourArtboardName"
- *   animation="YourAnimationName"
+ * For a perfect fill, re-export the .riv with a 1080x1920
+ * artboard in rive.app.
  */
 export const CobradorigaRive: React.FC<Props> = ({ width, height }) => {
   return (
@@ -28,7 +26,7 @@ export const CobradorigaRive: React.FC<Props> = ({ width, height }) => {
         overflow: "hidden",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-end",
       }}
     >
       <RemotionRiveCanvas

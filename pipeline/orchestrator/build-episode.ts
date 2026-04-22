@@ -160,7 +160,7 @@ export async function buildEpisodeJSON(state: PipelineState): Promise<Episode> {
 
     segments.push({
       type: "news",
-      layout: news.layout,
+      layout: "fullscreen",
       duration_ms: newsAudio?.duration_ms || 12000,
       audio_path: newsAudioPath,
       visual_path: visualPath1,

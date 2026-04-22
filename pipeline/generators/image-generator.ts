@@ -34,30 +34,39 @@ async function generateImage(
   prompt: string,
   outputPath: string
 ): Promise<void> {
-  // Create prediction
-  log.debug(`Calling Replicate API: ${REPLICATE_API_URL}`);
-  log.debug(`Token starts with: ${ENV.REPLICATE_API_TOKEN.substring(0, 6)}...`);
-  const createRes = await fetch(REPLICATE_API_URL, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${ENV.REPLICATE_API_TOKEN}`,
-      "Content-Type": "application/json",
-      Prefer: "wait",
-    },
-    body: JSON.stringify({
-      input: {
-        prompt,
-        aspect_ratio: "9:16",
-        num_outputs: 1,
-        output_format: "webp",
-        output_quality: 80,
+  // Create prediction (with retry for rate limits)
+  let createRes: Response | null = null;
+  for (let retry = 0; retry < 5; retry++) {
+    createRes = await fetch(REPLICATE_API_URL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${ENV.REPLICATE_API_TOKEN}`,
+        "Content-Type": "application/json",
+        Prefer: "wait",
       },
-    }),
-  });
+      body: JSON.stringify({
+        input: {
+          prompt,
+          aspect_ratio: "9:16",
+          num_outputs: 1,
+          output_format: "webp",
+          output_quality: 80,
+        },
+      }),
+    });
 
-  if (!createRes.ok) {
-    const errText = await createRes.text();
-    throw new Error(`Replicate API error (${createRes.status}): ${errText}`);
+    if (createRes.status === 429) {
+      const retryAfter = 12; // seconds, safe margin over the ~9s they suggest
+      log.warn(`  Rate limited, waiting ${retryAfter}s before retry ${retry + 1}/5...`);
+      await new Promise((r) => setTimeout(r, retryAfter * 1000));
+      continue;
+    }
+    break;
+  }
+
+  if (!createRes || !createRes.ok) {
+    const errText = createRes ? await createRes.text() : "No response";
+    throw new Error(`Replicate API error (${createRes?.status}): ${errText}`);
   }
 
   let prediction: ReplicateResponse = await createRes.json();
@@ -117,8 +126,8 @@ export async function generateImages(
     const startPath = resolve(imagesDir, `news_${idx}_start.webp`);
     await generateImage(prompt.image_prompt_start, startPath);
 
-    // Small delay to be nice to the API
-    await new Promise((r) => setTimeout(r, 500));
+    // Delay to respect rate limits (burst=1 with <$5 credit)
+    await new Promise((r) => setTimeout(r, 10000));
 
     log.info(`  News ${idx} - generating development scene...`);
     const developPath = resolve(imagesDir, `news_${idx}_develop.webp`);
@@ -132,7 +141,7 @@ export async function generateImages(
 
     // Delay between news items
     if (prompt !== prompts[prompts.length - 1]) {
-      await new Promise((r) => setTimeout(r, 500));
+      await new Promise((r) => setTimeout(r, 10000));
     }
   }
 

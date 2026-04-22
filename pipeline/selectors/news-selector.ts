@@ -45,7 +45,7 @@ REGLAS:
 - Selecciona EXACTAMENTE 3 noticias. Ni mas ni menos.
 - "index" es la posicion (0-based) del articulo en la lista proporcionada
 - "order" es el orden de presentacion (1 = primera noticia, mas impactante)
-- "layout" es "fullscreen" (visual ocupa toda la pantalla) o "monitor" (visual en monitor con presentador visible). Usa "monitor" para 1 noticia y "fullscreen" para las otras 2.
+- "layout" siempre debe ser "fullscreen" (visual ocupa toda la pantalla).
 - La primera noticia debe ser la mas impactante
 - Mezcla al menos 2 categorias diferentes`;
 

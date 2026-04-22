@@ -3,7 +3,7 @@
   "date": "2026-04-15",
   "status": "rendered",
   "background_music": "assets/music/background.mp3",
-  "total_duration_ms": 74064,
+  "total_duration_ms": 79628,
   "segments": [
     {
       "type": "intro",
@@ -11,6 +11,7 @@
       "duration_ms": 5000,
       "audio_path": "assets/music/Intro.mp3",
       "visual_path": null,
+      "visual_path_2": null,
       "visual_type": "static",
       "script_text": "",
       "news_source": null,
@@ -19,9 +20,10 @@
     {
       "type": "cobradoriga_speaks",
       "layout": "centered",
-      "duration_ms": 4728,
+      "duration_ms": 5251,
       "audio_path": "assets/audio/2026-04-15-001/intro.mp3",
       "visual_path": null,
+      "visual_path_2": null,
       "visual_type": "rive_animation",
       "script_text": "Bienvenidos reptiles a otro venenoso episodio de Culebrisa.",
       "news_source": null,
@@ -30,20 +32,41 @@
     {
       "type": "cobradoriga_speaks",
       "layout": "centered",
-      "duration_ms": 10057,
+      "duration_ms": 11416,
       "audio_path": "assets/audio/2026-04-15-001/headlines.mp3",
       "visual_path": null,
+      "visual_path_2": null,
       "visual_type": "rive_animation",
-      "script_text": "Hoy: México exige justicia al ICE, una mexicana hace historia en la WNBA, y un empresario prófugo cae en Florida.",
+      "script_text": "Hoy: mexicana en el Top 5 del Draft WNBA, México exige justicia al ICE, y un empresario prófugo atrapado en Florida.",
       "news_source": null,
       "prompts": null
     },
     {
       "type": "news",
       "layout": "fullscreen",
-      "duration_ms": 19122,
+      "duration_ms": 16953,
       "audio_path": "assets/audio/2026-04-15-001/news_0.mp3",
-      "visual_path": null,
+      "visual_path": "assets/visuals/2026-04-15-001/news_0_start.webp",
+      "visual_path_2": "assets/visuals/2026-04-15-001/news_0_develop.webp",
+      "visual_type": "image",
+      "script_text": "Gabriela Jáquez hace historia: la mexicana fue seleccionada en el quinto lugar del Draft WNBA 2026 tras ser campeona con UCLA Bruins. El talento nacional ya desliza en la élite del basquetbol femenil.",
+      "news_source": {
+        "title": "Gabriela Jáquez hace historia: mexicana es elegida en el Top 5 del Draft de la NBA Femenil",
+        "url": "https://www.elfinanciero.com.mx/deportes/2026/04/13/quien-es-gabriela-jaquez-basquetbolista-mexicana-elegida-en-el-draft-2026-para-la-wnba/",
+        "source": "El Financiero"
+      },
+      "prompts": {
+        "image": "A triumphant anthropomorphic green serpent basketball player wearing a UCLA Bruins jersey with scale patterns, holding a glowing golden basketball trophy high above her head on a dramatic arena court with snake-scale flooring. The crowd is filled with hundreds of cheering serpents of various species waving pennants, lit by bright stadium lights with confetti raining down in green and gold. Semi-realistic style, vertical 9:16 format, vibrant cinematic lighting.",
+        "video": "An elegant anthropomorphic serpent in a sleek WNBA draft suit with iridescent scale patterns stands at a glowing podium shaped like a coiled cobra, holding up a jersey with the number 5 as league officials (distinguished elder serpents in suits) shake her hand. A massive screen behind her displays her name in golden letters surrounded by snake motifs, the audience of reptilian fans erupts in celebration under dramatic spotlights. Semi-realistic, cinematic, vertical 9:16 format, vibrant greens and golds."
+      }
+    },
+    {
+      "type": "news",
+      "layout": "fullscreen",
+      "duration_ms": 17868,
+      "audio_path": "assets/audio/2026-04-15-001/news_1.mp3",
+      "visual_path": "assets/visuals/2026-04-15-001/news_1_start.webp",
+      "visual_path_2": "assets/visuals/2026-04-15-001/news_1_develop.webp",
       "visual_type": "image",
       "script_text": "México exige acciones inmediatas a EE.UU. tras la muerte de otro ciudadano bajo custodia del ICE en Luisiana. La Cancillería advierte fallas graves en el sistema migratorio estadounidense.",
       "news_source": {
@@ -52,54 +75,38 @@
         "source": "RT"
       },
       "prompts": {
-        "image": "A dramatic courtroom-style scene in the serpent universe: a large anthropomorphic Mexican green tree boa wearing a formal diplomatic suit and sash confronts a towering concrete detention facility with scale-textured walls and iron-bar windows shaped like fangs, holding up an official scroll document stamped with a coiled serpent seal. Inside a visible cell, the silhouette of a small serpent lies motionless on the floor, bathed in cold fluorescent light. The mood is tense and somber, cinematic lighting with deep shadows, muted greens and cold blues dominating the palette, vertical 9:16 composition.",
-        "video": "Slow dolly-in toward the detention facility as the diplomat serpent's scales shimmer with rising anger, papers flutter dramatically in a gust of wind, and the cold interior light flickers ominously behind the barred fang-shaped windows."
+        "image": "A somber scene inside a cold, dimly lit detention facility with barred walls textured like rough scales, where a small huddled group of immigrant serpents in tattered clothing sit behind iron-wrought gates shaped like intertwined snakes. A lone Mexican-flag-patterned serpent official in a diplomatic coat presses a hand against the glass in anguish, dramatic low-key lighting casting harsh shadows. Semi-realistic style, dark muted tones with flashes of red and green, vertical 9:16 format.",
+        "video": "A fierce anthropomorphic serpent diplomat wearing a sash with the Mexican serpent-eagle emblem slams a scaled fist on an ornate negotiation table in a grand hall with ondulating architecture, facing a row of stern American eagle-serpent hybrid officials across the table. Documents stamped with serpent-seal insignias scatter in the air, the tension is palpable under cold blue diplomatic lighting with the flags of both nations — reimagined with serpent motifs — standing on either side. Semi-realistic, cinematic drama, vertical 9:16 format."
       }
     },
     {
       "type": "news",
       "layout": "fullscreen",
-      "duration_ms": 13505,
-      "audio_path": "assets/audio/2026-04-15-001/news_1.mp3",
-      "visual_path": null,
-      "visual_type": "image",
-      "script_text": "Gabriela Jáquez hace historia: la mexicana fue seleccionada en el puesto cinco del Draft de la WNBA 2026. Fue campeona con UCLA Bruins antes de llegar a la élite.",
-      "news_source": {
-        "title": "Gabriela Jáquez hace historia: mexicana es elegida en el Top 5 del Draft de la NBA Femenil",
-        "url": "https://www.elfinanciero.com.mx/deportes/2026/04/13/quien-es-gabriela-jaquez-basquetbolista-mexicana-elegida-en-el-draft-2026-para-la-wnba/",
-        "source": "El Financiero"
-      },
-      "prompts": {
-        "image": "A triumphant serpent sports scene: a sleek, athletic corn snake with jersey number 5 and UCLA Bruins colors leaps gracefully into the air to dunk a basketball on a glowing arena court patterned with golden scale markings, confetti shaped like tiny shed skins raining down from above. A massive crowd of cheering anthropomorphic serpents of every species fills the stands waving banners that read 'DRAFT DAY' in a bold serpentine font. The lighting is explosive and celebratory — warm golds, purples, and spotlights, vertical 9:16 cinematic composition.",
-        "video": "Dynamic tracking shot following the athlete corn snake's leap in slow motion as she dunks, then the camera pulls back wide to reveal the roaring serpent crowd erupting in celebration, confetti of shed skins cascading through dramatic spotlight beams."
-      }
-    },
-    {
-      "type": "news",
-      "layout": "monitor",
-      "duration_ms": 14655,
+      "duration_ms": 15229,
       "audio_path": "assets/audio/2026-04-15-001/news_2.mp3",
-      "visual_path": null,
+      "visual_path": "assets/visuals/2026-04-15-001/news_2_start.webp",
+      "visual_path_2": "assets/visuals/2026-04-15-001/news_2_develop.webp",
       "visual_type": "image",
-      "script_text": "El ICE detuvo en Florida al empresario Rafael Zaga Tawil, prófugo acusado de defraudar cinco mil millones de pesos al Infonavit desde 2020.",
+      "script_text": "Rafael Zaga Tawil, prófugo acusado de defraudar 5 mil millones al Infonavit, fue capturado en Florida por el ICE. Años escondido, pero la madriguera siempre se encuentra.",
       "news_source": {
         "title": "Detienen en EU a Rafael Zaga Tawil, empresario acusado de fraude millonario al Infonavit",
         "url": "https://www.elfinanciero.com.mx/nacional/2026/04/13/detienen-en-eu-a-rafael-zaga-tawil-empresario-acusado-de-fraude-millonario-al-infonavit/",
         "source": "El Financiero"
       },
       "prompts": {
-        "image": "A tense noir arrest scene in the serpent universe: a heavyset, well-dressed king snake in an expensive scale-patterned suit and gold jewelry — representing Rafael Zaga Tawil — is being handcuffed by two large anthropomorphic rattlesnake agents in dark ICE-style jackets, against the backdrop of a luxury hotel lobby with undulating serpentine architecture and a chandelier made of intertwined golden snakes. Behind him, a projection screen displays stacks of snake-faced peso bills and a glowing INFONAVIT logo redesigned with a coiled cobra emblem. Dramatic chiaroscuro lighting, deep shadows, rich greens and golds, vertical 9:16 monitor-style composition.",
-        "video": "Cinematic push-in on the king snake's face as the handcuffs click shut, his gold jewelry catching the light, then a slow pan to the projection screen revealing cascading numbers and snake-faced bills dissolving into static."
+        "image": "A slick, well-dressed anthropomorphic viper in an expensive pin-striped suit covered in golden scale patterns is caught mid-flee, dramatically frozen as law enforcement serpents in tactical gear and badges shaped like coiled snakes surround him at a sun-drenched US border checkpoint with serpentine architecture. Piles of scattered currency — bills featuring serpent faces and coins engraved with scales — spill from his briefcase onto the ground. Semi-realistic style, harsh midday cinematic lighting, vibrant and dramatic, vertical 9:16 format.",
+        "video": "The same slick viper businessman is now shown in handcuffs made of interlinked snake links, being escorted by US and Mexican reptilian federal agents down a courthouse corridor with scale-patterned marble walls. Behind him, a giant projected headline in a snake-news broadcast shows his face alongside the number '5,000,000,000 pesos' surrounded by broken Infonavit logos redesigned as serpent coil emblems, while crowds of worker serpents outside cheer through the windows. Semi-realistic, cinematic golden and shadow tones, vertical 9:16 format."
       }
     },
     {
       "type": "cobradoriga_speaks",
       "layout": "centered",
-      "duration_ms": 3997,
+      "duration_ms": 4911,
       "audio_path": "assets/audio/2026-04-15-001/outro.mp3",
       "visual_path": null,
+      "visual_path_2": null,
       "visual_type": "rive_animation",
-      "script_text": "Eso fue todo reptiles, sigan deslizándose con cuidado.",
+      "script_text": "Eso fue todo reptiles, nos vemos mañana. Sigan deslizándose.",
       "news_source": null,
       "prompts": null
     },
@@ -109,6 +116,7 @@
       "duration_ms": 3000,
       "audio_path": null,
       "visual_path": null,
+      "visual_path_2": null,
       "visual_type": "static",
       "script_text": "",
       "news_source": null,
@@ -116,8 +124,8 @@
     }
   ],
   "metadata": {
-    "pipeline_start": "2026-04-15T06:38:42.208Z",
-    "pipeline_end": "2026-04-15T06:38:42.208Z"
+    "pipeline_start": "2026-04-15T07:45:07.689Z",
+    "pipeline_end": "2026-04-15T07:45:07.689Z"
   },
   "publish_status": {
     "instagram": "pending",

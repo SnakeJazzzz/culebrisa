@@ -46,46 +46,29 @@ export const CobradorigaSpeaks: React.FC<Props> = ({ segment, durationInFrames }
         opacity: fadeIn * fadeOut,
       }}
     >
-      {/* Cobradoriga Rive Animation - centered upper area */}
+      {/* Cobradoriga Rive Animation - fills entire screen */}
       <div
         style={{
           position: "absolute",
-          top: VIDEO_HEIGHT * 0.08,
+          top: 0,
           left: 0,
-          right: 0,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          width: VIDEO_WIDTH,
+          height: VIDEO_HEIGHT,
         }}
       >
         <CobradorigaRive
-          width={VIDEO_WIDTH * 0.85}
-          height={VIDEO_HEIGHT * 0.55}
+          width={VIDEO_WIDTH}
+          height={VIDEO_HEIGHT}
         />
       </div>
-
-      {/* Subtle glow behind character */}
-      <div
-        style={{
-          position: "absolute",
-          top: VIDEO_HEIGHT * 0.25,
-          left: VIDEO_WIDTH * 0.2,
-          width: VIDEO_WIDTH * 0.6,
-          height: VIDEO_HEIGHT * 0.2,
-          borderRadius: "50%",
-          background: `radial-gradient(ellipse, ${COLORS.primary}30, transparent)`,
-          filter: "blur(40px)",
-          pointerEvents: "none",
-        }}
-      />
 
       {/* Subtitle text at bottom */}
       <div
         style={{
           position: "absolute",
-          bottom: VIDEO_HEIGHT * 0.08,
-          left: 40,
-          right: 40,
+          bottom: VIDEO_HEIGHT * 0.06,
+          left: 32,
+          right: 32,
           display: "flex",
           justifyContent: "center",
         }}

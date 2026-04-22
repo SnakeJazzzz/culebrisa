@@ -14,6 +14,7 @@
  *   npx tsx pipeline/orchestrator/run.ts
  *   npx tsx pipeline/orchestrator/run.ts --skip-audio    (skip ElevenLabs)
  *   npx tsx pipeline/orchestrator/run.ts --skip-images   (skip Replicate)
+ *   npx tsx pipeline/orchestrator/run.ts --publish        (upload to YouTube after render)
  */
 
 import { writeFile, mkdir } from "fs/promises";
@@ -26,6 +27,8 @@ import { generatePrompts } from "../generators/prompt-generator.ts";
 import { generateImages } from "../generators/image-generator.ts";
 import { generateNarration } from "../narration/narration-engine.ts";
 import { buildEpisodeJSON } from "./build-episode.ts";
+import { publishToYouTube } from "../publishers/youtube-publisher.ts";
+import { ENV } from "../lib/config.ts";
 import type { PipelineState } from "../lib/types.ts";
 
 const log = createLogger("Orchestrator");
@@ -40,6 +43,7 @@ async function runPipeline() {
   const episodeDir = resolve(EPISODES_DIR, episodeId);
 
   const skipAudio = process.argv.includes("--skip-audio");
+  const shouldPublish = process.argv.includes("--publish");
 
   log.info(`========================================`);
   log.info(`  Culebrisa Pipeline - Episode ${episodeId}`);
@@ -144,6 +148,46 @@ async function runPipeline() {
     await writeFile(remotionDataPath, JSON.stringify(episode, null, 2));
     log.info(`Copied to Remotion: ${remotionDataPath}`);
 
+    // ── Step 8: Publish to YouTube ──
+    const videoOutputPath = resolve(PROJECT_ROOT, "out/episode.mp4");
+    if (shouldPublish) {
+      if (!ENV.YOUTUBE_CLIENT_ID || !ENV.YOUTUBE_CLIENT_SECRET) {
+        log.warn("\n--- Step 8: Skipping YouTube Publish (missing credentials) ---");
+        log.warn("Set YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET in .env");
+        log.warn("Run 'npm run youtube:auth' first to authorize");
+      } else {
+        log.info("\n--- Step 8: Publishing to YouTube ---");
+        log.info("Note: Video must be rendered first (npm run render)");
+
+        const { existsSync: fileExists } = await import("fs");
+        if (!fileExists(videoOutputPath)) {
+          log.warn(`Video not found at ${videoOutputPath}`);
+          log.warn("Run 'npm run render' first, then 'npm run youtube:publish'");
+        } else {
+          try {
+            const result = await publishToYouTube(
+              videoOutputPath,
+              episode,
+              ENV.YOUTUBE_CLIENT_ID,
+              ENV.YOUTUBE_CLIENT_SECRET
+            );
+            episode.publish_status.youtube = "published";
+            log.info(`YouTube: ${result.url} (${result.status})`);
+
+            // Update episode JSON with publish status
+            await writeFile(episodePath, JSON.stringify(episode, null, 2));
+            await writeFile(remotionDataPath, JSON.stringify(episode, null, 2));
+          } catch (pubErr) {
+            const msg = pubErr instanceof Error ? pubErr.message : String(pubErr);
+            log.error(`YouTube publish failed: ${msg}`);
+            episode.publish_status.youtube = `failed: ${msg}`;
+          }
+        }
+      }
+    } else {
+      log.info("\n--- Step 8: Skipping Publish (no --publish flag) ---");
+    }
+
     // ── Done ──
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
     log.info(`\n========================================`);
@@ -152,11 +196,17 @@ async function runPipeline() {
     log.info(`  Segments: ${episode.segments.length}`);
     log.info(`  Duration: ~${(episode.total_duration_ms / 1000).toFixed(0)}s`);
     log.info(`  Files: ${episodeDir}`);
+    if (shouldPublish) {
+      log.info(`  YouTube: ${episode.publish_status.youtube}`);
+    }
     log.info(`========================================`);
     log.info(`\nNext steps:`);
     log.info(`  1. Review: cat ${episodePath}`);
     log.info(`  2. Preview: npm run studio (select CulebrisaEpisode)`);
     log.info(`  3. Render: npm run render`);
+    if (!shouldPublish) {
+      log.info(`  4. Publish: npm run youtube:publish`);
+    }
   } catch (error) {
     const errMsg = error instanceof Error ? error.message : String(error);
     const errStack = error instanceof Error ? error.stack : "";

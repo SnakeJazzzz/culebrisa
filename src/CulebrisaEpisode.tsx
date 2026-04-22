@@ -12,22 +12,36 @@ interface Props {
   episode: Episode;
 }
 
+// Check if swoosh sound effect exists
+const SWOOSH_PATH = "assets/music/swoosh.mp3";
+const SWOOSH_DURATION_FRAMES = 30; // 1 second at 30fps
+
 /**
  * Main composition component.
  * Reads the Episode JSON and renders each segment sequentially
  * using Remotion's <Sequence> for timing.
- * Audio is played per-segment based on audio_path in the JSON.
  */
 export const CulebrisaEpisode: React.FC<Props> = ({ episode }) => {
   let currentFrame = 0;
   let newsCounter = 0;
+
+  // Pre-compute frame positions for swoosh placement
+  const segmentFrames: { fromFrame: number; durationInFrames: number; type: string }[] = [];
+  let tempFrame = 0;
+  for (const seg of episode.segments) {
+    const dur = msToFrames(seg.duration_ms);
+    segmentFrames.push({ fromFrame: tempFrame, durationInFrames: dur, type: seg.type });
+    tempFrame += dur;
+  }
+
+  const swooshElements: React.ReactNode[] = [];
 
   const renderSegment = (segment: Segment, index: number) => {
     const durationInFrames = msToFrames(segment.duration_ms);
     const fromFrame = currentFrame;
     currentFrame += durationInFrames;
 
-    // Parse audio paths (can be single path or pipe-separated for multiple)
+    // Parse audio paths
     const audioPaths = segment.audio_path
       ? segment.audio_path.split("|").filter(Boolean)
       : [];
@@ -39,6 +53,20 @@ export const CulebrisaEpisode: React.FC<Props> = ({ episode }) => {
         volume={1}
       />
     ));
+
+    // Add swoosh at the start of each news segment
+    if (segment.type === "news") {
+      swooshElements.push(
+        <Sequence
+          key={`swoosh-${index}`}
+          from={Math.max(0, fromFrame - 5)}
+          durationInFrames={SWOOSH_DURATION_FRAMES}
+          name={`Swoosh ${newsCounter + 1}`}
+        >
+          <Audio src={staticFile(SWOOSH_PATH)} volume={0.7} />
+        </Sequence>
+      );
+    }
 
     switch (segment.type) {
       case "intro":
@@ -112,9 +140,17 @@ export const CulebrisaEpisode: React.FC<Props> = ({ episode }) => {
     }
   };
 
+  const totalFrames = episode.segments.reduce(
+    (acc, s) => acc + msToFrames(s.duration_ms),
+    0
+  );
+
   return (
     <AbsoluteFill style={{ backgroundColor: COLORS.background }}>
       {episode.segments.map((segment, index) => renderSegment(segment, index))}
+
+      {/* Swoosh sound effects between news segments */}
+      {swooshElements}
 
       {/* Background music - starts after intro to avoid clash with stinger */}
       {episode.background_music && (() => {
@@ -122,10 +158,6 @@ export const CulebrisaEpisode: React.FC<Props> = ({ episode }) => {
         const introFrames = introSegment?.type === "intro"
           ? msToFrames(introSegment.duration_ms)
           : 0;
-        const totalFrames = episode.segments.reduce(
-          (acc, s) => acc + msToFrames(s.duration_ms),
-          0
-        );
         return (
           <Sequence
             from={introFrames}

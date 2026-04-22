@@ -24,4 +24,7 @@ export const ENV = {
   ELEVENLABS_API_KEY: requireEnv("ELEVENLABS_API_KEY"),
   ELEVENLABS_VOICE_ID: optionalEnv("ELEVENLABS_VOICE_ID"),
   REPLICATE_API_TOKEN: requireEnv("REPLICATE_API_TOKEN"),
+  // YouTube (optional — only needed for publishing)
+  YOUTUBE_CLIENT_ID: optionalEnv("YOUTUBE_CLIENT_ID"),
+  YOUTUBE_CLIENT_SECRET: optionalEnv("YOUTUBE_CLIENT_SECRET"),
 } as const;

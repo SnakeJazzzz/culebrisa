@@ -6,3 +6,5 @@ episodes/
 .env
 .env.local
 .env.production
+# YouTube OAuth tokens
+pipeline/lib/.youtube-token.json
