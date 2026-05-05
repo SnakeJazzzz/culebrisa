@@ -72,7 +72,6 @@ export async function buildEpisodeJSON(state: PipelineState): Promise<Episode> {
 
   const segments: Segment[] = [];
   const introAudio = state.audio_segments.find((a) => a.segment_id === "intro");
-  const headlinesAudio = state.audio_segments.find((a) => a.segment_id === "headlines");
   const outroAudio = state.audio_segments.find((a) => a.segment_id === "outro");
 
   // Helper: copy audio and get staticFile path
@@ -116,22 +115,7 @@ export async function buildEpisodeJSON(state: PipelineState): Promise<Episode> {
     prompts: null,
   });
 
-  // 3. Cobradoriga headlines preview
-  const headlinesAudioPath = await audioPath(headlinesAudio?.audio_path);
-  segments.push({
-    type: "cobradoriga_speaks",
-    layout: "centered",
-    duration_ms: headlinesAudio?.duration_ms || 4000,
-    audio_path: headlinesAudioPath,
-    visual_path: null,
-    visual_path_2: null,
-    visual_type: "rive_animation",
-    script_text: state.script?.headlines_preview || "",
-    news_source: null,
-    prompts: null,
-  });
-
-  // 4. News segments (with AI-generated images)
+  // 3. News segments (with AI-generated images)
   for (let i = 0; i < state.selected_news.length; i++) {
     const news = state.selected_news[i];
     const newsAudio = state.audio_segments.find(

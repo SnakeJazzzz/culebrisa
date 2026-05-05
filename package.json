@@ -9,6 +9,7 @@
     "render:preview": "remotion render src/index.ts CulebrisaEpisode out/preview.mp4 --frames=0-150",
     "pipeline": "tsx pipeline/orchestrator/run.ts",
     "pipeline:no-audio": "tsx pipeline/orchestrator/run.ts --skip-audio",
+    "daily": "npm run pipeline && npm run render",
     "voices": "tsx -e \"import { listVoices } from './pipeline/narration/narration-engine.ts'; listVoices();\"",
     "youtube:auth": "tsx pipeline/publishers/youtube-auth.ts",
     "youtube:publish": "tsx pipeline/orchestrator/run.ts --publish"

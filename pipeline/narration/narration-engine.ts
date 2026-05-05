@@ -143,7 +143,6 @@ export async function generateNarration(
   // Each script section becomes its own audio segment
   const textSegments = [
     { id: "intro", text: script.intro },
-    { id: "headlines", text: script.headlines_preview },
     ...script.news_segments.map((ns, i) => ({
       id: `news_${i}`,
       text: ns.narration,

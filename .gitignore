@@ -8,3 +8,4 @@ episodes/
 .env.production
 # YouTube OAuth tokens
 pipeline/lib/.youtube-token.json
+.claude/worktrees/

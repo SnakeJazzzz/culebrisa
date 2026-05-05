@@ -1,9 +1,9 @@
 {
-  "episode_id": "2026-04-15-001",
-  "date": "2026-04-15",
+  "episode_id": "2026-05-05-001",
+  "date": "2026-05-05",
   "status": "rendered",
   "background_music": "assets/music/background.mp3",
-  "total_duration_ms": 79628,
+  "total_duration_ms": 61264,
   "segments": [
     {
       "type": "intro",
@@ -20,93 +20,81 @@
     {
       "type": "cobradoriga_speaks",
       "layout": "centered",
-      "duration_ms": 5251,
-      "audio_path": "assets/audio/2026-04-15-001/intro.mp3",
+      "duration_ms": 6922,
+      "audio_path": "assets/audio/2026-05-05-001/intro.mp3",
       "visual_path": null,
       "visual_path_2": null,
       "visual_type": "rive_animation",
-      "script_text": "Bienvenidos reptiles a otro venenoso episodio de Culebrisa.",
-      "news_source": null,
-      "prompts": null
-    },
-    {
-      "type": "cobradoriga_speaks",
-      "layout": "centered",
-      "duration_ms": 11416,
-      "audio_path": "assets/audio/2026-04-15-001/headlines.mp3",
-      "visual_path": null,
-      "visual_path_2": null,
-      "visual_type": "rive_animation",
-      "script_text": "Hoy: mexicana en el Top 5 del Draft WNBA, México exige justicia al ICE, y un empresario prófugo atrapado en Florida.",
+      "script_text": "Bienvenidos reptiles al venenoso Culebrisa, soy Cobradoriga, y hoy hay veneno pa rato.",
       "news_source": null,
       "prompts": null
     },
     {
       "type": "news",
       "layout": "fullscreen",
-      "duration_ms": 16953,
-      "audio_path": "assets/audio/2026-04-15-001/news_0.mp3",
-      "visual_path": "assets/visuals/2026-04-15-001/news_0_start.webp",
-      "visual_path_2": "assets/visuals/2026-04-15-001/news_0_develop.webp",
+      "duration_ms": 13610,
+      "audio_path": "assets/audio/2026-05-05-001/news_0.mp3",
+      "visual_path": "assets/visuals/2026-05-05-001/news_0_start.webp",
+      "visual_path_2": "assets/visuals/2026-05-05-001/news_0_develop.webp",
       "visual_type": "image",
-      "script_text": "Gabriela Jáquez hace historia: la mexicana fue seleccionada en el quinto lugar del Draft WNBA 2026 tras ser campeona con UCLA Bruins. El talento nacional ya desliza en la élite del basquetbol femenil.",
+      "script_text": "El Chapo Guzmán escribió una carta pidiendo que lo extraditen a México desde su celda en Estados Unidos. No mames, el señor extraña su madriguera.",
       "news_source": {
-        "title": "Gabriela Jáquez hace historia: mexicana es elegida en el Top 5 del Draft de la NBA Femenil",
-        "url": "https://www.elfinanciero.com.mx/deportes/2026/04/13/quien-es-gabriela-jaquez-basquetbolista-mexicana-elegida-en-el-draft-2026-para-la-wnba/",
-        "source": "El Financiero"
+        "title": "‘El Chapo’ Guzmán pide su extradición a México",
+        "url": "https://aristeguinoticias.com/0405/mexico/el-chapo-guzman-pide-su-extradicion-a-mexico/",
+        "source": "Aristeguinoticias.com"
       },
       "prompts": {
-        "image": "A triumphant anthropomorphic green serpent basketball player wearing a UCLA Bruins jersey with scale patterns, holding a glowing golden basketball trophy high above her head on a dramatic arena court with snake-scale flooring. The crowd is filled with hundreds of cheering serpents of various species waving pennants, lit by bright stadium lights with confetti raining down in green and gold. Semi-realistic style, vertical 9:16 format, vibrant cinematic lighting.",
-        "video": "An elegant anthropomorphic serpent in a sleek WNBA draft suit with iridescent scale patterns stands at a glowing podium shaped like a coiled cobra, holding up a jersey with the number 5 as league officials (distinguished elder serpents in suits) shake her hand. A massive screen behind her displays her name in golden letters surrounded by snake motifs, the audience of reptilian fans erupts in celebration under dramatic spotlights. Semi-realistic, cinematic, vertical 9:16 format, vibrant greens and golds."
+        "image": "A weathered anthropomorphic kingsnake with a thick mustache and a worn prison jumpsuit, handwriting a letter with his scaly claws inside a dark stone cell with iron bars, dramatic single light beam from above, cinematic and semi-realistic style, vertical 9:16 composition. The cell walls are carved with serpentine patterns and scale textures, giving the space an oppressive reptilian atmosphere.",
+        "video": "A massive serpentine courthouse filled with anthropomorphic snake lawyers and judges in robes, a giant glowing parchment letter floats in the center of the room displaying serpent-script text, shocked snake spectators fill the gallery with wide slit-pupil eyes, dramatic golden and green lighting from above, semi-realistic cinematic vertical composition. The architecture features undulating arches and scale-patterned walls evoking a grand reptilian hall of justice."
       }
     },
     {
       "type": "news",
       "layout": "fullscreen",
-      "duration_ms": 17868,
-      "audio_path": "assets/audio/2026-04-15-001/news_1.mp3",
-      "visual_path": "assets/visuals/2026-04-15-001/news_1_start.webp",
-      "visual_path_2": "assets/visuals/2026-04-15-001/news_1_develop.webp",
+      "duration_ms": 11938,
+      "audio_path": "assets/audio/2026-05-05-001/news_1.mp3",
+      "visual_path": "assets/visuals/2026-05-05-001/news_1_start.webp",
+      "visual_path_2": "assets/visuals/2026-05-05-001/news_1_develop.webp",
       "visual_type": "image",
-      "script_text": "México exige acciones inmediatas a EE.UU. tras la muerte de otro ciudadano bajo custodia del ICE en Luisiana. La Cancillería advierte fallas graves en el sistema migratorio estadounidense.",
+      "script_text": "Emiratos Árabes Unidos interceptó tres misiles lanzados desde Irán, y eso con alto el fuego supuestamente en vigor. Qué pinche forma de hacer las paces.",
       "news_source": {
-        "title": "México exige a EE.UU. \"acciones inmediatas\" tras la muerte de otro ciudadano bajo custodia del ICE",
-        "url": "https://actualidad.rt.com/actualidad/599115-muere-mexicano-custodia-ice-eeuu",
-        "source": "RT"
+        "title": "Emiratos Árabes Unidos intercepta tres misiles procedentes de Irán pese al alto el fuego en vigor",
+        "url": "https://www.latercera.com/mundo/noticia/emiratos-arabes-unidos-intercepta-tres-misiles-procedentes-de-iran-pese-al-alto-el-fuego-en-vigor/",
+        "source": "Latercera.com"
       },
       "prompts": {
-        "image": "A somber scene inside a cold, dimly lit detention facility with barred walls textured like rough scales, where a small huddled group of immigrant serpents in tattered clothing sit behind iron-wrought gates shaped like intertwined snakes. A lone Mexican-flag-patterned serpent official in a diplomatic coat presses a hand against the glass in anguish, dramatic low-key lighting casting harsh shadows. Semi-realistic style, dark muted tones with flashes of red and green, vertical 9:16 format.",
-        "video": "A fierce anthropomorphic serpent diplomat wearing a sash with the Mexican serpent-eagle emblem slams a scaled fist on an ornate negotiation table in a grand hall with ondulating architecture, facing a row of stern American eagle-serpent hybrid officials across the table. Documents stamped with serpent-seal insignias scatter in the air, the tension is palpable under cold blue diplomatic lighting with the flags of both nations — reimagined with serpent motifs — standing on either side. Semi-realistic, cinematic drama, vertical 9:16 format."
+        "image": "Three enormous serpentine missiles shaped like coiling snakes with glowing red eyes streak across a golden desert night sky, launched from a distant horizon toward the glittering snake-scale skyline of a futuristic UAE city, dramatic fiery orange and deep blue lighting, cinematic semi-realistic style, vertical 9:16 composition. The city towers are designed with spiraling scales and curved reptilian architecture that shimmers under the threat of incoming fire.",
+        "video": "Sleek anthropomorphic cobra soldiers in high-tech scale-patterned armor operate giant glowing radar screens shaped like serpent hoods, interceptor serpent-missiles launch upward exploding three incoming threats in brilliant flashes of light above the city, a fourth explosion visible far out over a dark digital ocean on their screens, tense green-tinted war-room lighting, vertical semi-realistic cinematic composition. The control room walls pulse with bioluminescent snake-scale patterns as alarms flash gold and red."
       }
     },
     {
       "type": "news",
       "layout": "fullscreen",
-      "duration_ms": 15229,
-      "audio_path": "assets/audio/2026-04-15-001/news_2.mp3",
-      "visual_path": "assets/visuals/2026-04-15-001/news_2_start.webp",
-      "visual_path_2": "assets/visuals/2026-04-15-001/news_2_develop.webp",
+      "duration_ms": 16379,
+      "audio_path": "assets/audio/2026-05-05-001/news_2.mp3",
+      "visual_path": "assets/visuals/2026-05-05-001/news_2_start.webp",
+      "visual_path_2": "assets/visuals/2026-05-05-001/news_2_develop.webp",
       "visual_type": "image",
-      "script_text": "Rafael Zaga Tawil, prófugo acusado de defraudar 5 mil millones al Infonavit, fue capturado en Florida por el ICE. Años escondido, pero la madriguera siempre se encuentra.",
+      "script_text": "Las remesas de Estados Unidos a México ya viajan más por aplicaciones que en efectivo, gracias a las fintech y sus comisiones más bajas. La muda de piel tecnológica llegó al dinero migrante.",
       "news_source": {
-        "title": "Detienen en EU a Rafael Zaga Tawil, empresario acusado de fraude millonario al Infonavit",
-        "url": "https://www.elfinanciero.com.mx/nacional/2026/04/13/detienen-en-eu-a-rafael-zaga-tawil-empresario-acusado-de-fraude-millonario-al-infonavit/",
+        "title": "Las remesas digitales desplazan al efectivo en las transferencias de EU a México",
+        "url": "https://www.elfinanciero.com.mx/bloomberg-businessweek/2026/05/04/las-remesas-digitales-desplazan-al-efectivo-en-las-transferencias-de-eu-a-mexico/",
         "source": "El Financiero"
       },
       "prompts": {
-        "image": "A slick, well-dressed anthropomorphic viper in an expensive pin-striped suit covered in golden scale patterns is caught mid-flee, dramatically frozen as law enforcement serpents in tactical gear and badges shaped like coiled snakes surround him at a sun-drenched US border checkpoint with serpentine architecture. Piles of scattered currency — bills featuring serpent faces and coins engraved with scales — spill from his briefcase onto the ground. Semi-realistic style, harsh midday cinematic lighting, vibrant and dramatic, vertical 9:16 format.",
-        "video": "The same slick viper businessman is now shown in handcuffs made of interlinked snake links, being escorted by US and Mexican reptilian federal agents down a courthouse corridor with scale-patterned marble walls. Behind him, a giant projected headline in a snake-news broadcast shows his face alongside the number '5,000,000,000 pesos' surrounded by broken Infonavit logos redesigned as serpent coil emblems, while crowds of worker serpents outside cheer through the windows. Semi-realistic, cinematic golden and shadow tones, vertical 9:16 format."
+        "image": "A tired anthropomorphic rattlesnake migrant worker in dusty clothes holds a glowing smartphone with a snake-scale textured interface, digitally sending a swirling stream of golden coins stamped with serpent faces across a luminous digital map stretching from a US city to a Mexican town below, warm golden and teal lighting, cinematic semi-realistic style, vertical 9:16 composition. The background shows two contrasting skylines connected by a glowing serpentine data stream flowing through the air.",
+        "video": "A cheerful anthropomorphic boa constrictor grandmother in a colorful Mexican village receives a glowing notification on her scale-patterned smartphone, golden digital coins materializing in her hands while a crowd of excited snake neighbors gathers around her, festive warm orange and green market lighting with papel picado made of tiny snake skins hanging overhead, semi-realistic cinematic vertical composition. Behind them a vibrant market stall displays goods priced in serpent-currency, celebrating the arrival of digital remesas."
       }
     },
     {
       "type": "cobradoriga_speaks",
       "layout": "centered",
-      "duration_ms": 4911,
-      "audio_path": "assets/audio/2026-04-15-001/outro.mp3",
+      "duration_ms": 4415,
+      "audio_path": "assets/audio/2026-05-05-001/outro.mp3",
       "visual_path": null,
       "visual_path_2": null,
       "visual_type": "rive_animation",
-      "script_text": "Eso fue todo reptiles, nos vemos mañana. Sigan deslizándose.",
+      "script_text": "Eso fue todo reptiles, nos vemos mañana, sigan deslizándose.",
       "news_source": null,
       "prompts": null
     },
@@ -124,8 +112,8 @@
     }
   ],
   "metadata": {
-    "pipeline_start": "2026-04-15T07:45:07.689Z",
-    "pipeline_end": "2026-04-15T07:45:07.689Z"
+    "pipeline_start": "2026-05-05T17:34:14.754Z",
+    "pipeline_end": "2026-05-05T17:34:14.754Z"
   },
   "publish_status": {
     "instagram": "pending",

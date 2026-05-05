@@ -26,7 +26,6 @@ export interface SelectedNews {
 // Generated script for the full episode
 export interface EpisodeScript {
   intro: string;
-  headlines_preview: string;
   news_segments: {
     narration: string;
     news_index: number;
